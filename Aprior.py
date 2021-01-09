@@ -1,5 +1,6 @@
 #-*-coding:utf-8-*-
 from typing import List
+from itertools import chain
 
 class Aprior():
 
@@ -11,10 +12,7 @@ class Aprior():
         self.transactions = transactions
 
     def get_I(self) -> List[str]:
-        I = []
-        list(map(lambda x: I.extend(x), self.transactions))
-        I = list(set(I))
-        return sorted(I)
+        return sorted(set(chain(*self.transactions)))
 
     def F(self, items: List[List[str]] or List[str]) -> List[List[str]]:
         # 统计集合出现次数
